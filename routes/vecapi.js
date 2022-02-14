@@ -23,7 +23,7 @@ router.get('/api/v/', (req, res) =>
     {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
-        connection.query('SELECT * FROM VEC', (err, rows) => 
+        connection.query('SELECT * FROM vec', (err, rows) => 
         {
             connection.release() // return the connection to pool
 
@@ -50,7 +50,7 @@ router.get('/api/v/:vec_id', (req, res) =>
     pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
-        connection.query('SELECT * FROM VEC WHERE vec_id = ?', vec_id, (err, rows) => 
+        connection.query('SELECT * FROM vec WHERE vec_id = ?', vec_id, (err, rows) => 
         {
             connection.release() // return the connection to pool
 
@@ -75,7 +75,7 @@ router.post('/api/r/', (req, res) =>
         if(err) throw err
         
         const params = req.body
-        connection.query('INSERT INTO VEC SET ?', params, (err, rows) => 
+        connection.query('INSERT INTO vec SET ?', params, (err, rows) => 
         {
         connection.release() // return the connection to pool
         if (!err) 
