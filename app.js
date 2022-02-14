@@ -13,5 +13,5 @@ app.use(bodyParser.json())
 app.use('/',router);
 
 
-//listing port
+//listing port.
 app.listen(port,()=> console.log('listen on port '+ port))
